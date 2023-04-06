@@ -33,6 +33,18 @@ body {
 .numbers-and-operations {
   background-color: rgb(140, 140, 255);
   flex-grow: 5;
+  display: flex;
+  gap: 12px;
+}
+
+.numbers {
+  background-color: rgb(255, 164, 130);
+  flex-grow: 2;
+}
+
+.operations {
+  background-color: rgb(255, 164, 130);
+  flex-grow: 1;
 }
 
 button {
