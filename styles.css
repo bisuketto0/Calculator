@@ -22,7 +22,7 @@ body {
 }
 
 .display-options {
-  background-color: rgb(140, 140, 255);
+  /* background-color: rgb(140, 140, 255); */
   flex-grow: 0.5;
   gap: 12px;
   display: flex;
@@ -31,15 +31,19 @@ body {
 }
 
 .numbers-and-operations {
-  background-color: rgb(140, 140, 255);
+  /* background-color: rgb(140, 140, 255); */
   flex-grow: 5;
   display: flex;
   gap: 12px;
 }
 
 .numbers {
-  background-color: rgb(255, 164, 130);
-  flex-grow: 2;
+  /* background-color: rgb(255, 164, 130); */
+  flex-grow: 1.5;
+  display: grid;
+  gap: 6px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 1fr);
 }
 
 .operations {
@@ -50,12 +54,16 @@ body {
 button {
   display: inline-block;
   border: none;
-  border-radius: 6px;
   text-decoration: none;
-  font-size: 1em;
 }
 
 .opt-btn {
   width: 25%;
   height: 100%;
+  border-radius: 6px;
+  font-size: 1em;
+}
+
+.number-btn {
+  border-radius: 6px;
 }
