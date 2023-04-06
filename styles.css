@@ -8,17 +8,20 @@ body {
 
 .calculator {
   background-color: rgb(218, 200, 200);
-  width: 400px;
-  height: 500px;
+  min-width: 250px;
+  width: 300px;
+  height: 425px;
   padding: 24px;
   gap: 12px;
+  border-radius: 6px;
   display: flex;
   flex-direction: column;
 }
 
 .display {
   background-color: rgb(140, 140, 255);
-  flex-grow: 2;
+  flex-grow: 3;
+  border-radius: 6px;
 }
 
 .display-options {
@@ -34,7 +37,7 @@ body {
   /* background-color: rgb(140, 140, 255); */
   flex-grow: 5;
   display: flex;
-  gap: 12px;
+  gap: 8px;
 }
 
 .numbers {
@@ -47,8 +50,18 @@ body {
 }
 
 .operations {
-  background-color: rgb(255, 164, 130);
+  /* background-color: rgb(255, 164, 130); */
   flex-grow: 1;
+  display: grid;
+  gap: 6px;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+}
+
+.equal {
+  grid-column-start: 2;
+  grid-row-start: 3;
+  grid-row-end: span 2;
 }
 
 button {
@@ -65,5 +78,9 @@ button {
 }
 
 .number-btn {
+  border-radius: 6px;
+}
+
+.oper-btn {
   border-radius: 6px;
 }
