@@ -7,6 +7,8 @@ let operator = '';
 const numberButtons = document.querySelectorAll('.number-btn');
 const operationButtons = document.querySelectorAll('.oper-btn');
 const displayButtons = document.querySelectorAll('.display-btn');
+const displayCurrent = document.querySelector('.current-number');
+const displayOperation = document.querySelector('.operation');
 
 // Math operation functions
 const add = function(a, b) {
@@ -42,8 +44,13 @@ const operate = function(firstNumber, secondNumber) {
   }
 }
 
+// Function for when clicking number
+const writeNumber = function(e) {
+  displayCurrent.textContent += e.target.textContent
+}
+
 // Listeners // 
 // Listens to the number buttons
 numberButtons.forEach(numberButton => {
-  numberButton.addEventListener('click')
+  numberButton.addEventListener('click', writeNumber)
 })
