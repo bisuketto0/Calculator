@@ -41,3 +41,9 @@ const operate = function(firstNumber, secondNumber) {
       divide(firstNumber, secondNumber);
   }
 }
+
+// Listeners // 
+// Listens to the number buttons
+numberButtons.forEach(numberButton => {
+  numberButton.addEventListener('click')
+})
