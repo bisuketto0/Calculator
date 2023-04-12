@@ -58,10 +58,11 @@ const writeNumber = function(e) {
 
 // Function for when clicking operator
 const selectOperator = function(e) {
+  // If there is a first number assign second number
+  // and do the operation
   if (firstNumber) {
     if (displayCurrent.textContent) {
       secondNumber = displayCurrent.textContent;
-      displayCurrent.textContent = '';
       firstNumber = operate(firstNumber, secondNumber);
       displayCurrent.textContent = firstNumber;
       secondNumber = '';
@@ -69,6 +70,7 @@ const selectOperator = function(e) {
     } else if (!displayCurrent.textContent) {
       operator = e.target.textContent;
     }
+    // But if there isn't a first number assign first number
   } else if (!firstNumber) {
     if (displayCurrent.textContent) {
       firstNumber = displayCurrent.textContent;
