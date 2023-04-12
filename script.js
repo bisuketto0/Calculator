@@ -24,3 +24,20 @@ const multiply = function(a, b) {
 const divide = function(a, b) {
   return a / b;
 };
+
+// Operate function 
+const operate = function(firstNumber, secondNumber) {
+  switch (operator) {
+    case '+':
+      add(firstNumber, secondNumber);
+      break;
+    case '-':
+      subtract(firstNumber, secondNumber);
+      break;
+    case 'X':
+      multiply(firstNumber, secondNumber);
+      break;
+    case '÷':
+      divide(firstNumber, secondNumber);
+  }
+}
