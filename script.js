@@ -48,7 +48,12 @@ const operate = function(firstNumber, secondNumber) {
 
 // Function for when clicking number
 const writeNumber = function(e) {
-  displayCurrent.textContent += e.target.textContent;
+  if (firstNumber) {
+    displayCurrent.textContent = '';
+    displayCurrent.textContent += e.target.textContent;
+  } else if (!firstNumber) {
+    displayCurrent.textContent += e.target.textContent;
+  }
 };
 
 // Function for when clicking operator
@@ -58,8 +63,8 @@ const selectOperator = function(e) {
       secondNumber = displayCurrent.textContent;
       displayCurrent.textContent = '';
       firstNumber = operate(firstNumber, secondNumber);
+      displayCurrent.textContent = firstNumber;
       secondNumber = '';
-      displayCurrent.textContent = '';
       operator = e.target.textContent;
     } else if (!displayCurrent.textContent) {
       operator = e.target.textContent;
@@ -67,7 +72,7 @@ const selectOperator = function(e) {
   } else if (!firstNumber) {
     if (displayCurrent.textContent) {
       firstNumber = displayCurrent.textContent;
-      displayCurrent.textContent = '';
+      displayCurrent.textContent = firstNumber;
       operator = e.target.textContent;
     }
   }
