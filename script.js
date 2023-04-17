@@ -49,7 +49,7 @@ const operate = function(firstNumber, secondNumber) {
 // Function for when clicking number
 const writeNumber = function(e) {
   if (firstNumber) {
-    displayCurrent.textContent = '';
+    // displayCurrent.textContent = '';
     displayCurrent.textContent += e.target.textContent;
   } else if (!firstNumber) {
     displayCurrent.textContent += e.target.textContent;
@@ -58,13 +58,13 @@ const writeNumber = function(e) {
 
 // Function for when clicking operator
 const selectOperator = function(e) {
-  // If there is a first number assign second number
+  // If there is a first number assign second number, 
   // and do the operation
   if (firstNumber) {
     if (displayCurrent.textContent) {
       secondNumber = displayCurrent.textContent;
       firstNumber = operate(firstNumber, secondNumber);
-      displayCurrent.textContent = firstNumber;
+      displayCurrent.textContent = '';
       secondNumber = '';
       operator = e.target.textContent;
     } else if (!displayCurrent.textContent) {
@@ -74,7 +74,7 @@ const selectOperator = function(e) {
   } else if (!firstNumber) {
     if (displayCurrent.textContent) {
       firstNumber = displayCurrent.textContent;
-      displayCurrent.textContent = firstNumber;
+      displayCurrent.textContent = '';
       operator = e.target.textContent;
     }
   }

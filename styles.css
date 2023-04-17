@@ -94,3 +94,7 @@ button {
 .oper-btn {
   border-radius: 6px;
 }
+
+.selected {
+  background-color: rgb(165, 165, 165);
+}
