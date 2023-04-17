@@ -15,6 +15,8 @@ const displayOperation = document.querySelector('.operation');
 const writeNumber = function(e) {
   if (shouldResetCurrent) resetCurrent()
   displayCurrent.textContent += e.target.textContent;
+  // Deselect button
+  operationButtons.forEach(button => button.classList.remove('selected'))
 };
 
 // Function for when clicking operator
@@ -39,14 +41,20 @@ const selectOperator = function(e) {
       operator = e.target.textContent;
     }
   }
-  displayOperation.textContent = `${firstNumber} ${operator}`;
   shouldResetCurrent = true
+  selectButton(e.target)
 };
 
 // Reset current number
 const resetCurrent = function() {
   displayCurrent.textContent = ''
   shouldResetCurrent = false
+}
+
+// Select the button
+const selectButton = function(thisButton) {
+  operationButtons.forEach(button => button.classList.remove('selected'))
+  thisButton.classList.add('selected')
 }
 
 // Math operation functions
