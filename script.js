@@ -10,6 +10,7 @@ const operationButtons = document.querySelectorAll('.oper-btn');
 const displayButtons = document.querySelectorAll('.display-btn');
 const displayCurrent = document.querySelector('.current-number');
 const displayOperation = document.querySelector('.operation');
+const equalButton = document.querySelector('.equal');
 
 // Function for when clicking number
 const writeNumber = function(e) {
@@ -26,18 +27,17 @@ const selectOperator = function(e) {
   if (firstNumber) evaluate();
   // But if there isn't a first number assign first number  
   firstNumber = displayCurrent.textContent;
-  displayCurrent.textContent = firstNumber;
   operator = e.target.textContent;
   shouldResetCurrent = true;
   selectButton(e.target);
 };
 
-const evaluate = function() {
+const evaluate = function(e) {
   if (shouldResetCurrent) return;
   secondNumber = displayCurrent.textContent;
-  firstNumber = operate(firstNumber, secondNumber);
-  displayCurrent.textContent = firstNumber;
+  displayCurrent.textContent = operate(firstNumber, secondNumber);
   secondNumber = '';
+  shouldResetCurrent = true;
 };
 
 // Reset current number
@@ -86,12 +86,13 @@ const operate = function(firstNumber, secondNumber) {
 };
 
 // Listeners // 
-// Listens to the number buttons
+
 numberButtons.forEach(numberButton => {
   numberButton.addEventListener('click', writeNumber);
 });
 
-// Listens to the operation buttons
 operationButtons.forEach(operationButton => {
   operationButton.addEventListener('click', selectOperator);
 });
+
+equalButton.addEventListener('click', evaluate);
