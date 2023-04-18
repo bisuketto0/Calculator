@@ -15,34 +15,29 @@ const displayOperation = document.querySelector('.operation');
 const writeNumber = function(e) {
   if (shouldResetCurrent) resetCurrent()
   displayCurrent.textContent += e.target.textContent;
+  shouldResetCurrent = false;
   // Deselect button
-  operationButtons.forEach(button => button.classList.remove('selected'))
+  operationButtons.forEach(button => button.classList.remove('selected'));
 };
 
 // Function for when clicking operator
 const selectOperator = function(e) {
-  // If there is a first number assign second number, 
-  // and do the operation
-  if (firstNumber) {
-    if (displayCurrent.textContent) {
-      secondNumber = displayCurrent.textContent;
-      firstNumber = operate(firstNumber, secondNumber);
-      displayCurrent.textContent = firstNumber;
-      secondNumber = '';
-      operator = e.target.textContent;
-    } else if (!displayCurrent.textContent) {
-      operator = e.target.textContent;
-    }
-    // But if there isn't a first number assign first number
-  } else if (!firstNumber) {
-    if (displayCurrent.textContent) {
-      firstNumber = displayCurrent.textContent;
-      displayCurrent.textContent = firstNumber;
-      operator = e.target.textContent;
-    }
-  }
-  shouldResetCurrent = true
-  selectButton(e.target)
+  // If there is a first number evaluate
+  if (firstNumber) evaluate();
+  // But if there isn't a first number assign first number  
+  firstNumber = displayCurrent.textContent;
+  displayCurrent.textContent = firstNumber;
+  operator = e.target.textContent;
+  shouldResetCurrent = true;
+  selectButton(e.target);
+};
+
+const evaluate = function() {
+  if (shouldResetCurrent) return;
+  secondNumber = displayCurrent.textContent;
+  firstNumber = operate(firstNumber, secondNumber);
+  displayCurrent.textContent = firstNumber;
+  secondNumber = '';
 };
 
 // Reset current number
@@ -81,13 +76,10 @@ const operate = function(firstNumber, secondNumber) {
   switch (operator) {
     case '+':
       return add(firstNumber, secondNumber);
-      break;
     case '-':
       return subtract(firstNumber, secondNumber);
-      break;
     case 'X':
       return multiply(firstNumber, secondNumber);
-      break;
     case '÷':
       return divide(firstNumber, secondNumber);
   }
