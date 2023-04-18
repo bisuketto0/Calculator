@@ -13,6 +13,7 @@ const displayOperation = document.querySelector('.operation');
 const equalButton = document.querySelector('.equal');
 const clearBtn = document.querySelector('#clear');
 const deleteBtn = document.querySelector('#delete');
+const pointBtn = document.querySelector('.point')
 
 // Function for when clicking number
 const writeNumber = function(e) {
@@ -68,7 +69,12 @@ const clear = function() {
 const del = function() {
   let string = displayCurrent.textContent
   displayCurrent.textContent = string.slice(0, string.length - 1)
-}
+};
+
+const writePoint = function() {
+  if (displayCurrent.textContent.includes('.')) return;
+  displayCurrent.textContent += '.'
+};
 
 // Math operation functions
 const add = function(a, b) {
@@ -89,8 +95,8 @@ const divide = function(a, b) {
 
 // Operate function 
 const operate = function(firstNumber, secondNumber) {
-  firstNumber = parseInt(firstNumber);
-  secondNumber = parseInt(secondNumber);
+  firstNumber = Number(firstNumber);
+  secondNumber = Number(secondNumber);
   switch (operator) {
     case '+':
       return add(firstNumber, secondNumber);
@@ -118,3 +124,5 @@ equalButton.addEventListener('click', evaluate);
 clearBtn.addEventListener('click', clear);
 
 deleteBtn.addEventListener('click', del);
+
+pointBtn.addEventListener('click', writePoint);
