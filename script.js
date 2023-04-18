@@ -5,12 +5,11 @@ let operator = '';
 let shouldResetCurrent = false;
 
 // Document selectors
-const numberButtons = document.querySelectorAll('.number-btn');
-const operationButtons = document.querySelectorAll('.oper-btn');
-const displayButtons = document.querySelectorAll('.display-btn');
-const displayCurrent = document.querySelector('.current-number');
+const numberButtons = document.querySelectorAll('#number-btn');
+const operationButtons = document.querySelectorAll('#oper-btn');
+const displayCurrent = document.querySelector('.display');
 const displayOperation = document.querySelector('.operation');
-const equalButton = document.querySelector('.equal');
+const equalButton = document.querySelector('#equal');
 const clearBtn = document.querySelector('#clear');
 const deleteBtn = document.querySelector('#delete');
 const pointBtn = document.querySelector('.point')
@@ -63,12 +62,16 @@ const clear = function() {
   operator = '';
   shouldResetCurrent = false
   displayCurrent.textContent = '0'
+  // Deselect button
+  operationButtons.forEach(button => button.classList.remove('selected'));
 };
 
 // Delete number
 const del = function() {
   let string = displayCurrent.textContent
   displayCurrent.textContent = string.slice(0, string.length - 1)
+  // Deselect button
+  operationButtons.forEach(button => button.classList.remove('selected'));
 };
 
 const writePoint = function() {

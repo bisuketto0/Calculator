@@ -9,34 +9,24 @@ body {
 .calculator {
   background-color: rgb(218, 200, 200);
   min-width: 300px;
-  width: 375px;
-  height: 525px;
-  padding: 24px;
+  width: 350px;
+  height: 500px;
+  padding: 16px;
   gap: 12px;
-  border-radius: 6px;
+  border-radius: 24px;
   display: flex;
   flex-direction: column;
 }
 
 .display {
-  background-color: rgb(140, 140, 255);
-  flex-grow: 3;
+  text-align: end;
+  height: 20%;
+  font-size: 54px;
   /* border-radius: 6px; */
-  border-top: 1px solid rgb(255, 255, 255);
-}
-
-.display-box {
-  background-color: rgb(221, 221, 221);
-  border-bottom: 1px solid rgb(255, 255, 255);
-  border-right: 1px solid rgb(255, 255, 255);
-  border-left: 1px solid rgb(255, 255, 255);
-  width: 100%;
-  height: 50%;
 }
 
 .display-buttons {
-  /* background-color: rgb(140, 140, 255); */
-  flex-grow: 0.5;
+  height: 10%;
   gap: 12px;
   display: flex;
   justify-content: start;
@@ -44,35 +34,18 @@ body {
 }
 
 .numbers-and-operations {
-  /* background-color: rgb(140, 140, 255); */
-  flex-grow: 5;
-  display: flex;
-  gap: 8px;
-}
-
-.numbers {
-  /* background-color: rgb(255, 164, 130); */
-  flex-grow: 1.5;
+  height: 70%;
   display: grid;
-  gap: 6px;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(4, 1fr);
+  gap: 12px;
+  grid-template-columns: repeat(4, 22.5%);
+  grid-template-rows: repeat(4, 22.5%);
 }
 
-.operations {
-  /* background-color: rgb(255, 164, 130); */
-  flex-grow: 1;
-  display: grid;
-  gap: 6px;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(4, 1fr);
-}
-
-.equal {
+/* .equal {
   grid-column-start: 2;
   grid-row-start: 3;
   grid-row-end: span 2;
-}
+} */
 
 button {
   display: inline-block;
@@ -81,18 +54,14 @@ button {
 }
 
 .display-btn {
-  width: 25%;
+  width: 50%;
   height: 100%;
   border-radius: 6px;
   font-size: 1em;
 }
 
-.number-btn {
-  border-radius: 6px;
-}
-
-.oper-btn {
-  border-radius: 6px;
+.btn {
+  border-radius: 100%;
 }
 
 .selected {
