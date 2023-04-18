@@ -64,6 +64,12 @@ const clear = function() {
   displayCurrent.textContent = '0'
 };
 
+// Delete number
+const del = function() {
+  let string = displayCurrent.textContent
+  displayCurrent.textContent = string.slice(0, string.length - 1)
+}
+
 // Math operation functions
 const add = function(a, b) {
   return a + b;
@@ -111,4 +117,4 @@ equalButton.addEventListener('click', evaluate);
 
 clearBtn.addEventListener('click', clear);
 
-deleteBtn.addEventListener('click', );
+deleteBtn.addEventListener('click', del);
