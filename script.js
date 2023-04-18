@@ -11,10 +11,12 @@ const displayButtons = document.querySelectorAll('.display-btn');
 const displayCurrent = document.querySelector('.current-number');
 const displayOperation = document.querySelector('.operation');
 const equalButton = document.querySelector('.equal');
+const clearBtn = document.querySelector('#clear');
+const deleteBtn = document.querySelector('#delete');
 
 // Function for when clicking number
 const writeNumber = function(e) {
-  if (shouldResetCurrent) resetCurrent()
+  if (shouldResetCurrent || displayCurrent.textContent === '0') resetCurrent()
   displayCurrent.textContent += e.target.textContent;
   shouldResetCurrent = false;
   // Deselect button
@@ -32,6 +34,7 @@ const selectOperator = function(e) {
   selectButton(e.target);
 };
 
+// Do the operation
 const evaluate = function(e) {
   if (shouldResetCurrent) return;
   secondNumber = displayCurrent.textContent;
@@ -40,7 +43,7 @@ const evaluate = function(e) {
   shouldResetCurrent = true;
 };
 
-// Reset current number
+// Reset current number display
 const resetCurrent = function() {
   displayCurrent.textContent = ''
   shouldResetCurrent = false
@@ -51,6 +54,15 @@ const selectButton = function(thisButton) {
   operationButtons.forEach(button => button.classList.remove('selected'))
   thisButton.classList.add('selected')
 }
+
+// Clear operations
+const clear = function() {
+  firstNumber = '';
+  secondNumber = '';
+  operator = '';
+  shouldResetCurrent = false
+  displayCurrent.textContent = '0'
+};
 
 // Math operation functions
 const add = function(a, b) {
@@ -96,3 +108,7 @@ operationButtons.forEach(operationButton => {
 });
 
 equalButton.addEventListener('click', evaluate);
+
+clearBtn.addEventListener('click', clear);
+
+deleteBtn.addEventListener('click', );
