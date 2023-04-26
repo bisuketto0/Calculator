@@ -12,13 +12,12 @@ const displayOperation = document.querySelector('.operation');
 const equalButton = document.querySelector('#equal');
 const clearBtn = document.querySelector('#clear');
 const deleteBtn = document.querySelector('#delete');
-const pointBtn = document.querySelector('.point')
+const pointBtn = document.querySelector('#point')
 
 // Function for when clicking number
 const writeNumber = function(e) {
   if (shouldResetCurrent || displayCurrent.textContent === '0') resetCurrent()
   displayCurrent.textContent += e.target.textContent;
-  shouldResetCurrent = false;
   // Deselect button
   operationButtons.forEach(button => button.classList.remove('selected'));
 };
@@ -38,45 +37,55 @@ const selectOperator = function(e) {
 const evaluate = function(e) {
   if (shouldResetCurrent) return;
   secondNumber = displayCurrent.textContent;
-  displayCurrent.textContent = operate(firstNumber, secondNumber);
+  displayCurrent.textContent = roundNumber(operate(firstNumber, secondNumber));
   secondNumber = '';
   shouldResetCurrent = true;
 };
 
 // Reset current number display
 const resetCurrent = function() {
-  displayCurrent.textContent = ''
-  shouldResetCurrent = false
-}
+  displayCurrent.textContent = '';
+  shouldResetCurrent = false;
+};
 
 // Select the button
 const selectButton = function(thisButton) {
-  operationButtons.forEach(button => button.classList.remove('selected'))
-  thisButton.classList.add('selected')
-}
+  operationButtons.forEach(button => button.classList.remove('selected'));
+  thisButton.classList.add('selected');
+};
 
 // Clear operations
 const clear = function() {
   firstNumber = '';
   secondNumber = '';
   operator = '';
-  shouldResetCurrent = false
-  displayCurrent.textContent = '0'
+  shouldResetCurrent = false;
+  displayCurrent.textContent = '0';
   // Deselect button
   operationButtons.forEach(button => button.classList.remove('selected'));
 };
 
 // Delete number
 const del = function() {
-  let string = displayCurrent.textContent
-  displayCurrent.textContent = string.slice(0, string.length - 1)
+  if (displayCurrent.textContent.length === 1) displayCurrent.textContent = '0';
+  if (displayCurrent.textContent === '0') return;
+  let string = displayCurrent.textContent;
+  displayCurrent.textContent = string.slice(0, string.length - 1);
   // Deselect button
   operationButtons.forEach(button => button.classList.remove('selected'));
 };
 
 const writePoint = function() {
+  if (shouldResetCurrent) {
+    resetCurrent();
+    displayCurrent.textContent += '0';
+  }
   if (displayCurrent.textContent.includes('.')) return;
-  displayCurrent.textContent += '.'
+  displayCurrent.textContent += '.';
+};
+
+const roundNumber = function(number) {
+  return Math.round(number * 1000) / 1000;
 };
 
 // Math operation functions
